@@ -4,7 +4,7 @@ const path = require('path');
 const config = {
   cache: true,
   devtool: 'inline-source-map',
-  entry: './spec.entry.ts',
+  entry: './test/component/AddDeleteFooter',
 
   output: {
     path: __dirname,
@@ -20,7 +20,7 @@ const config = {
     loaders: [
       {
         test: /\.(ts|tsx)$/,
-        loaders: ['babel', 'ts'],
+        loaders: ['mocha','babel', 'ts'],
         include: path.join(__dirname, 'src')
       },
     	{
