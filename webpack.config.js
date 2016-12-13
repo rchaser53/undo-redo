@@ -17,7 +17,7 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx', '.css']
+    extensions: ['', '.json', '.js', '.jsx', '.ts', '.tsx', '.css']
   },
   module: {
     preLoaders:[
@@ -33,6 +33,7 @@ module.exports = {
         loaders: ['babel', 'ts'],
         include: path.join(__dirname, 'src')
       },
+			{ test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.css$/,
         loaders: [

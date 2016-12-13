@@ -5,6 +5,9 @@ import sinon from 'sinon'
 
 import AddDeleteFooter from '../../src/component/AddDeleteFooter'
 
+declare var describe
+declare var it
+
 describe('components', () => {
 	describe('PropertiesInputNumberRow', () => {
 
