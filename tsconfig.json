@@ -12,6 +12,7 @@
 		"strictNullChecks": true,
 		"noUnusedLocals": false,
 		"noEmit": false,
+		"sourceMap": true,
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,

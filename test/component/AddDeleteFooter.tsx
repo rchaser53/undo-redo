@@ -23,7 +23,7 @@ describe('components', () => {
 																				temporaryItem={temporaryItem}
 																				activateItem={[]} />)
 
-			expect(addDeleteFooter.length > 0).toEqual(true)
+			expect(addDeleteFooter.length > 0).toEqual(false)
 		})
 	})
 })
