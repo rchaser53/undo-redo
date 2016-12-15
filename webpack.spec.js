@@ -1,19 +1,22 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const config = {
-  cache: true,
-  devtool: 'inline-source-map',
-  entry: './test/component/AddDeleteFooter',
-
+module.exports = {
+	// cache: true,
+  devtool: 'source-map',
+	entry: ['./test/component/AddDeleteFooter'],
   output: {
-    path: __dirname,
-    filename: 'specs.js',
-    sourceMapFilename: 'specs.map'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/static/'
   },
-
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   resolve: {
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx', '.css', '.html']
+    extensions: ['', '.json', '.js', '.jsx', '.ts', '.tsx', '.css']
   },
 	externals:[
 		'react/lib/ExecutionEnvironment',
@@ -21,24 +24,20 @@ const config = {
 		'react/lib/ReactContext'
 	],
   module: {
-		preLoaders: [
-				{ test: /\.js$/, loader: "source-map-loader" }
-		],
     loaders: [
       {
         test: /\.(ts|tsx)$/,
-        loaders: ["mocha","ts"],
-        exclude: /node_modules/
+        loaders: ['mocha', 'babel', "ts"],
+				exclude: 'node_modules'
       },
 			{ test: /\.json$/, loader: 'json-loader' },
-    	{
-				test: /\.css$/,
+      {
+        test: /\.css$/,
         loaders: [
           'style-loader',
           'css?modules'
         ]
-			}
-    ]
+      }
+      ]
   }
 };
-module.exports = config;
